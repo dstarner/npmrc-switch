@@ -1,0 +1,22 @@
+{
+  "name": "npmrc-switch",
+  "author": {
+    "name": "Dan Starner",
+    "email": "dstarner@bloomberg.net",
+    "url": "https://www.danstarner.com"
+  },
+  "version": "1.0.0",
+  "description": "Allows switching between different .npmrc files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bin": {
+    "npmrc-switch": "./cli.js"
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
+  }
+}
