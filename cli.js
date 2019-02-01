@@ -24,7 +24,7 @@ An utility to make it easier switching between different npm configs.
 
 Usage: $ npm-switch <action> <value>
 
---- Available Commands ---
+=== Available Commands ===
 
   save <name>                Save the current configuration to a reference <name>
 
@@ -38,7 +38,7 @@ Usage: $ npm-switch <action> <value>
   clear                      Clear the current contents of your npm configuration 
                              (NOT REVERSIBLE)
 
---- Available Flags ---
+=== Available Flags ===
 
   -d, --directory <str>  The directory where we will save configuration files 
                          (default $HOME/.npmrc-switch)

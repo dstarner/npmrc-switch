@@ -28,5 +28,16 @@ $ npmrc-switch --help
 
 ```bash
 # Just remove the help and add your commands
-$ npx -p npmrc-switch npmrc-switch --help
+$ npx npmrc-switch --help
+```
+
+### Alias for Easier Use
+
+Consider adding this to your `.bashrc`, `.zshrc`, or `.profile` to make it easier to run.
+
+```
+# If installed
+alias ns="npmrc-switch"
+# If using npx
+alias ns="npx npmrc-switch"
 ```
