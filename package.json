@@ -9,7 +9,7 @@
     "type" : "git",
     "url" : "https://github.com/dstarner/npmrc-switch.git"
   },
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Allows switching between different .npmrc files.",
   "main": "cli.js",
   "scripts": {
