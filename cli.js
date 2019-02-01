@@ -26,20 +26,22 @@ Usage: $ npm-switch <action> <value>
 
 --- Available Commands ---
 
-  save <name>        Save the current configuration to a reference <name>
+  save <name>                Save the current configuration to a reference <name>
 
-  load <name>        Load a saved configuration by its reference <name>
+  load <name>                Load a saved configuration by its reference <name>
   
-  delete <name>      Delete a saved configuration by its reference <name>
+  delete <name>              Delete a saved configuration by its reference <name>
   
-  view [<name>|all]  View a specific save configuration, or all saved 
-                     configurations, specified by 'all'
+  view [<name>|all|current]  View a specific save configuration, or all saved 
+                             configurations, specified by 'all'
 
-  clear              Clear the current contents of your npm configuration (NOT REVERSIBLE)
+  clear                      Clear the current contents of your npm configuration 
+                             (NOT REVERSIBLE)
 
 --- Available Flags ---
 
-  -d, --directory <str>  The directory where we will save configuration files (default $HOME/.npmrc-switch)
+  -d, --directory <str>  The directory where we will save configuration files 
+                         (default $HOME/.npmrc-switch)
   -n, --npmrc <str>      The absolute path to your .npmrc file (default $HOME/.npmrc)
   -h, --help             Show this usage message
 
@@ -159,7 +161,6 @@ program.option('-d, --directory <directory>', 'The directory where we will save 
  */
 program
     .command('save <name>')
-    .option('-f, --force', 'Force save, even if a config already exists')
     .action(function (name, cmd) {
         if (!ensureValueExists(name)) {
             console.error('name must be valid!');
@@ -177,7 +178,7 @@ program
                 if (npmrcContents.length > 0) {
                     fs.writeFileSync(path.join(directory, name), `${AUTO_COMMENT}\n${npmrcContents}`);
                 } else {
-                    console.error(`Can't write an empty configuration`)
+                    console.error(`Can't write an empty configuration, use 'clear' instead`)
                 }
                 releaseLock(directory);
             }).catch(() => process.exit(1));
@@ -256,6 +257,7 @@ program
     acquireLock(directory)
         .then(() => {
             fs.writeFileSync(program.npmrc, '');
+            releaseLock(directory);
         }).catch(() => process.exit(1));
 });
 
@@ -282,6 +284,12 @@ program
                 pathsToView.push(configPath)
             }
         })
+    } else if (name === 'current') {
+        pathsToView = [program.npmrc];
+        if (!fs.existsSync(program.npmrc)) {
+            console.error('Could not locate the current .npmrc file');
+            process.exit(1);
+        }
     } else {
         pathsToView = [path.join(directory, name)];
         ensureConfigurationExists(pathsToView[0], true);
