@@ -5,13 +5,17 @@
     "email": "dstarner@bloomberg.net",
     "url": "https://www.danstarner.com"
   },
-  "version": "1.0.0",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/dstarner/npmrc-switch.git"
+  },
+  "version": "0.1.0",
   "description": "Allows switching between different .npmrc files.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["npm", "npmrc", "configuration", "switch", "npmrc-switch"],
   "license": "ISC",
   "bin": {
     "npmrc-switch": "./cli.js"

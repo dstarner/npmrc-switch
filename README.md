@@ -10,3 +10,23 @@ internal proxies. Sometimes public registries are available, othertimes they are
 the pain of switching between different `npm` configurations for those environments.
 
 ## How to Use 
+
+Its like choose your own adventure games, but much less exciting.
+
+### Installing Globally
+
+```bash
+$ npm install -g npmrc-switch
+# Or with sudo if needed
+$ npm install -g npmrc-switch
+
+# Run the command
+$ npmrc-switch --help
+```
+
+### Using NPX
+
+```bash
+# Just remove the help and add your commands
+$ npx -p npmrc-switch npmrc-switch --help
+```
